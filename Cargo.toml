@@ -1,0 +1,27 @@
+[package]
+name = "suprnova-oauth-github"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94.0"
+license = "MIT"
+description = "GitHub OAuth provider plugin for Suprnova"
+repository = "https://github.com/eas4ai/suprnova-oauth-github"
+homepage = "https://github.com/eas4ai/suprnova-oauth-github"
+keywords = ["suprnova", "oauth", "github", "authentication"]
+categories = ["authentication", "web-programming"]
+publish = false
+
+[dependencies]
+base64 = "0.22"
+secrecy = "0.10"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+suprnova = { version = "=1.3.2", git = "https://github.com/eas4ai/suprnova.git", tag = "v1.3.2" }
+thiserror = "2"
+url = "2"
+
+[dev-dependencies]
+sea-orm = { version = "2.0", features = ["runtime-tokio-rustls", "sqlx-sqlite"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+toml = "0.8"
+wiremock = "0.6"
