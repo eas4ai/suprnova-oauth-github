@@ -2,6 +2,9 @@
 
 `suprnova-oauth-github` is an external GitHub OAuth provider plugin for Suprnova. It uses only the public API exported by `suprnova` v1.3.2. It doesn't depend directly on `suprnova-magnetar`, use a Suprnova workspace path, or access framework internals.
 
+To learn how to create an external provider rather than install this one, read
+[Build an external OAuth provider for Suprnova](BUILDING.md).
+
 The plugin provides:
 
 - GitHub OAuth App authorization-code sign-in with Suprnova-managed state and PKCE.
