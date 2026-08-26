@@ -6398,8 +6398,8 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 
 [[package]]
 name = "suprnova"
-version = "1.3.6"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v1.3.6#b2acf191bf7cc775f05a2e05e95992a264c4eecb"
+version = "1.3.7"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v1.3.7#2a307dfe04b9bb5a6690ae2befca128566723689"
 dependencies = [
  "aes-gcm",
  "ammonia",
@@ -6505,8 +6505,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-macros"
-version = "1.3.6"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v1.3.6#b2acf191bf7cc775f05a2e05e95992a264c4eecb"
+version = "1.3.7"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v1.3.7#2a307dfe04b9bb5a6690ae2befca128566723689"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -6516,8 +6516,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-magnetar"
-version = "1.3.6"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v1.3.6#b2acf191bf7cc775f05a2e05e95992a264c4eecb"
+version = "1.3.7"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v1.3.7#2a307dfe04b9bb5a6690ae2befca128566723689"
 dependencies = [
  "aes-gcm",
  "apple",
@@ -6546,7 +6546,7 @@ dependencies = [
 
 [[package]]
 name = "suprnova-oauth-github"
-version = "0.1.4"
+version = "0.1.5"
 dependencies = [
  "base64 0.22.1",
  "sea-orm",
@@ -6563,8 +6563,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-web-push"
-version = "1.3.6"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v1.3.6#b2acf191bf7cc775f05a2e05e95992a264c4eecb"
+version = "1.3.7"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v1.3.7#2a307dfe04b9bb5a6690ae2befca128566723689"
 dependencies = [
  "base64 0.22.1",
  "chrono",
