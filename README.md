@@ -1,6 +1,6 @@
 # GitHub OAuth for Suprnova
 
-`suprnova-oauth-github` is an external GitHub OAuth provider plugin for Suprnova. It uses only the public API exported by `suprnova` v1.3.2. It doesn't depend directly on `suprnova-magnetar`, use a Suprnova workspace path, or access framework internals.
+`suprnova-oauth-github` is an external GitHub OAuth provider plugin for Suprnova. It uses only the public API exported by `suprnova` v1.3.3. It doesn't depend directly on `suprnova-magnetar`, use a Suprnova workspace path, or access framework internals.
 
 To learn how to create an external provider rather than install this one, read
 [Build an external OAuth provider for Suprnova](BUILDING.md).
@@ -35,7 +35,7 @@ The implementation follows GitHub's current public contracts:
 You need:
 
 - Rust 1.94.0 or later.
-- Suprnova v1.3.2.
+- Suprnova v1.3.3.
 - A GitHub OAuth App.
 - `SessionMiddleware` on the OAuth start and callback routes.
 - A configured Suprnova `RateLimiterDriver`. Production deployments normally use the shared Redis driver.
@@ -63,8 +63,8 @@ Add Suprnova, this plugin, and `secrecy` to your application's `Cargo.toml`:
 
 ```toml
 [dependencies]
-suprnova = { git = "https://github.com/eas4ai/suprnova.git", tag = "v1.3.2" }
-suprnova-oauth-github = { git = "https://github.com/eas4ai/suprnova-oauth-github.git", tag = "v0.1.0" }
+suprnova = { git = "https://github.com/eas4ai/suprnova.git", tag = "v1.3.3" }
+suprnova-oauth-github = { git = "https://github.com/eas4ai/suprnova-oauth-github.git", tag = "v0.1.1" }
 url = "2"
 ```
 
@@ -163,6 +163,42 @@ fn required_env(name: &'static str) -> Result<String, FrameworkError> {
 Call `register_github_oauth().await` during application bootstrap after the database, encryption key, session store, and rate limiter driver are registered. Call `init_magnetar` only once.
 
 `ReqwestOAuthTransport::try_default()` disables redirects, applies a 30-second timeout, limits responses to 1 MiB, and supplies a default Suprnova `User-Agent`. The provider-specific value in `GITHUB_OAUTH_USER_AGENT` replaces that default on GitHub REST requests.
+
+### Keep an existing user and session stack
+
+The bootstrap example above uses full Magnetar account and session completion.
+If the application already owns its `users` table, password guard, framework
+sessions, and remember-me state, install only the OAuth engine instead:
+
+```rust
+use suprnova::{
+    MagnetarOAuthOnlyConfig, init_magnetar_oauth_only,
+};
+
+init_magnetar_oauth_only(
+    MagnetarOAuthOnlyConfig::from_sea_orm(
+        database.inner().clone(),
+        oauth,
+    ),
+)
+.await?;
+```
+
+In that mode the callback verifies provider proof without asking Magnetar to
+map or issue the application's session:
+
+```rust
+let identity = Auth::oauth("github")
+    .verify_oauth_identity(&code, &state)
+    .await?;
+
+// Resolve identity.subject in your own OAuth-account table, then:
+Auth::login(user, false).await?;
+```
+
+Do not call `complete` in OAuth-only mode. Full and OAuth-only initialization
+are alternatives; Suprnova rejects a second initializer instead of mixing
+session authorities.
 
 ## Add the routes
 
@@ -297,7 +333,7 @@ Content-Type: application/json
 {"access_token":"..."}
 ```
 
-GitHub deletes the application grant and all OAuth tokens associated with that user. The plugin doesn't enable GitHub's optional expiring-token and refresh-token mode in v0.1.0.
+GitHub deletes the application grant and all OAuth tokens associated with that user. The plugin doesn't enable GitHub's optional expiring-token and refresh-token mode in v0.1.1.
 
 ## Security properties
 
@@ -325,7 +361,7 @@ cargo test --all-targets
 cargo check --example suprnova_app
 ```
 
-The `public_sdk_firewall` test verifies that the manifest uses the public Suprnova `v1.3.2` Git tag, has no path dependency, and has no direct Magnetar dependency or import.
+The `public_sdk_firewall` test verifies that the manifest uses the public Suprnova `v1.3.3` Git tag, has no path dependency, and has no direct Magnetar dependency or import.
 
 ## License
 
