@@ -1,6 +1,6 @@
 # Build an external OAuth provider for Suprnova
 
-This tutorial builds a GitHub OAuth provider as an ordinary third-party Suprnova developer. The finished crate lives outside the Suprnova workspace, depends on the public `v1.3.7` Git tag, and imports every SDK type through `suprnova::`.
+This tutorial builds a GitHub OAuth provider as an ordinary third-party Suprnova developer. The finished crate lives outside the Suprnova workspace, depends on the public `v2.0.0` Git tag, and imports every SDK type through `suprnova::`.
 
 The goal is not to configure an existing provider. The goal is to implement the provider, transport adapter, identity rules, revocation behavior, tests, and downstream registration proof that make a provider safe to publish.
 
@@ -56,7 +56,7 @@ base64 = "0.22"
 secrecy = "0.10"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-suprnova = { version = "=1.3.7", git = "https://github.com/eas4ai/suprnova.git", tag = "v1.3.7" }
+suprnova = { version = "=2.0.0", git = "https://github.com/eas4ai/suprnova.git", tag = "v2.0.0" }
 thiserror = "2"
 url = "2"
 ```
@@ -555,7 +555,7 @@ Make the external boundary executable. Parse `Cargo.toml` in a test and require:
 
 ```text
 suprnova git = https://github.com/eas4ai/suprnova.git
-suprnova tag = v1.3.7
+suprnova tag = v2.0.0
 suprnova path = absent
 suprnova-magnetar direct dependency = absent
 ```
