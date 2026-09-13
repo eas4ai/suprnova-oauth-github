@@ -64,7 +64,7 @@ Add Suprnova, this plugin, and `secrecy` to your application's `Cargo.toml`:
 ```toml
 [dependencies]
 suprnova = { git = "https://github.com/eas4ai/suprnova.git", tag = "v2.0.1" }
-suprnova-oauth-github = { git = "https://github.com/eas4ai/suprnova-oauth-github.git", tag = "v0.1.5" }
+suprnova-oauth-github = { git = "https://github.com/eas4ai/suprnova-oauth-github.git", tag = "v0.2.0" }
 url = "2"
 ```
 
@@ -333,7 +333,7 @@ Content-Type: application/json
 {"access_token":"..."}
 ```
 
-GitHub deletes the application grant and all OAuth tokens associated with that user. The plugin doesn't enable GitHub's optional expiring-token and refresh-token mode in v0.1.5.
+GitHub deletes the application grant and all OAuth tokens associated with that user. The plugin doesn't enable GitHub's optional expiring-token and refresh-token mode in v0.2.0.
 
 ## Security properties
 

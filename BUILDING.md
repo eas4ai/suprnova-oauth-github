@@ -1,6 +1,6 @@
 # Build an external OAuth provider for Suprnova
 
-This tutorial builds a GitHub OAuth provider as an ordinary third-party Suprnova developer. The finished crate lives outside the Suprnova workspace, depends on the public `v2.0.0` Git tag, and imports every SDK type through `suprnova::`.
+This tutorial builds a GitHub OAuth provider as an ordinary third-party Suprnova developer. The finished crate lives outside the Suprnova workspace, depends on the public `v2.0.1` Git tag, and imports every SDK type through `suprnova::`.
 
 The goal is not to configure an existing provider. The goal is to implement the provider, transport adapter, identity rules, revocation behavior, tests, and downstream registration proof that make a provider safe to publish.
 
@@ -45,7 +45,7 @@ Use Rust 1.94.0 and edition 2024. The relevant manifest entries are:
 ```toml
 [package]
 name = "suprnova-oauth-github"
-version = "0.1.5"
+version = "0.2.0"
 edition = "2024"
 rust-version = "1.94.0"
 license = "MIT"
@@ -56,7 +56,7 @@ base64 = "0.22"
 secrecy = "0.10"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-suprnova = { version = "=2.0.0", git = "https://github.com/eas4ai/suprnova.git", tag = "v2.0.0" }
+suprnova = { version = "=2.0.1", git = "https://github.com/eas4ai/suprnova.git", tag = "v2.0.1" }
 thiserror = "2"
 url = "2"
 ```
@@ -222,7 +222,7 @@ async fn client_authentication(
 }
 ```
 
-Version `0.1.5` does not opt into GitHub's optional expiring-token mode, so its refresh policy is explicit:
+Version `0.2.0` does not opt into GitHub's optional expiring-token mode, so its refresh policy is explicit:
 
 ```rust
 fn refresh_policy(&self) -> suprnova::RefreshPolicy {
@@ -555,7 +555,7 @@ Make the external boundary executable. Parse `Cargo.toml` in a test and require:
 
 ```text
 suprnova git = https://github.com/eas4ai/suprnova.git
-suprnova tag = v2.0.0
+suprnova tag = v2.0.1
 suprnova path = absent
 suprnova-magnetar direct dependency = absent
 ```
@@ -640,7 +640,7 @@ cargo package --list
 
 Create an annotated tag and a GitHub Release only after the standalone crate and a clean released-tag consumer compile.
 
-The published GitHub plugin used this sequence for `v0.1.5`. Its final suite covered provider behavior, transport behavior, real HTTP requests against a mock server, complete public-SDK identity exchange, and the dependency firewall.
+The published GitHub plugin used this sequence for `v0.2.0`. Its final suite covered provider behavior, transport behavior, real HTTP requests against a mock server, complete public-SDK identity exchange, and the dependency firewall.
 
 ## Reuse the pattern for another provider
 
