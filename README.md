@@ -1,6 +1,6 @@
 # GitHub OAuth for Suprnova
 
-`suprnova-oauth-github` is an external GitHub OAuth provider plugin for Suprnova. It uses only the public API exported by `suprnova` v2.0.1. It doesn't depend directly on `suprnova-magnetar`, use a Suprnova workspace path, or access framework internals.
+`suprnova-oauth-github` is an external GitHub OAuth provider plugin for Suprnova. It uses only the public API exported by `suprnova` v2.0.2. It doesn't depend directly on `suprnova-magnetar`, use a Suprnova workspace path, or access framework internals.
 
 To learn how to create an external provider rather than install this one, read
 [Build an external OAuth provider for Suprnova](BUILDING.md).
@@ -35,7 +35,7 @@ The implementation follows GitHub's current public contracts:
 You need:
 
 - Rust 1.94.0 or later.
-- Suprnova v2.0.1.
+- Suprnova v2.0.2.
 - A GitHub OAuth App.
 - `SessionMiddleware` on the OAuth start and callback routes.
 - A configured Suprnova `RateLimiterDriver`. Production deployments normally use the shared Redis driver.
@@ -63,8 +63,8 @@ Add Suprnova, this plugin, and `secrecy` to your application's `Cargo.toml`:
 
 ```toml
 [dependencies]
-suprnova = { git = "https://github.com/eas4ai/suprnova.git", tag = "v2.0.1" }
-suprnova-oauth-github = { git = "https://github.com/eas4ai/suprnova-oauth-github.git", tag = "v0.2.0" }
+suprnova = { git = "https://github.com/eas4ai/suprnova.git", tag = "v2.0.2" }
+suprnova-oauth-github = { git = "https://github.com/eas4ai/suprnova-oauth-github.git", tag = "v0.2.1" }
 url = "2"
 ```
 
@@ -333,7 +333,7 @@ Content-Type: application/json
 {"access_token":"..."}
 ```
 
-GitHub deletes the application grant and all OAuth tokens associated with that user. The plugin doesn't enable GitHub's optional expiring-token and refresh-token mode in v0.2.0.
+GitHub deletes the application grant and all OAuth tokens associated with that user. The plugin doesn't enable GitHub's optional expiring-token and refresh-token mode in v0.2.1.
 
 ## Security properties
 
@@ -361,7 +361,7 @@ cargo test --all-targets
 cargo check --example suprnova_app
 ```
 
-The `public_sdk_firewall` test verifies that the manifest uses the public Suprnova `v2.0.1` Git tag, has no path dependency, and has no direct Magnetar dependency or import.
+The `public_sdk_firewall` test verifies that the manifest uses the public Suprnova `v2.0.2` Git tag, has no path dependency, and has no direct Magnetar dependency or import.
 
 ## License
 
