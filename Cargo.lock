@@ -1068,6 +1068,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "charts-rs"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "345df58e125d09449010e16c1569994610543dc293f32454c1306d5d6e4623ce"
+dependencies = [
+ "arc-swap",
+ "fontdue",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "chrono"
 version = "0.4.45"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2132,9 +2144,25 @@ checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
 
 [[package]]
 name = "foldhash"
+version = "0.1.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d9c4f5dac5e15c24eb999c26181a6ca40b39fe946cbe4c263c7209467bc83af2"
+
+[[package]]
+name = "foldhash"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "77ce24cb58228fbb8aa041425bb1050850ac19177686ea6e0f41a70416f56fdb"
+
+[[package]]
+name = "fontdue"
+version = "0.9.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7894823fa221401399e2598f8b63f81ac77ff5c63248b7656779bff1632d7d3d"
+dependencies = [
+ "hashbrown 0.15.5",
+ "ttf-parser",
+]
 
 [[package]]
 name = "foreign-types"
@@ -2426,13 +2454,24 @@ checksum = "e5274423e17b7c9fc20b6e7e208532f9b19825d82dfd615708b70edd83df41f1"
 
 [[package]]
 name = "hashbrown"
+version = "0.15.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9229cfe53dfd69f0609a49f65461bd93001ea1ef889cd5529dd176593f5338a1"
+dependencies = [
+ "allocator-api2",
+ "equivalent",
+ "foldhash 0.1.5",
+]
+
+[[package]]
+name = "hashbrown"
 version = "0.16.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "841d1cc9bed7f9236f321df977030373f4a4163ae1a7dbfe1a51a2c1a51d9100"
 dependencies = [
  "allocator-api2",
  "equivalent",
- "foldhash",
+ "foldhash 0.2.0",
 ]
 
 [[package]]
@@ -6415,8 +6454,8 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 
 [[package]]
 name = "suprnova"
-version = "2.0.2"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v2.0.2#2333400d6009eb4e292198e0b4b9a6ad0e11f1ae"
+version = "2.1.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v2.1.0#250a6423d9c3f63945843093df7e021bd3bee595"
 dependencies = [
  "aes-gcm",
  "ammonia",
@@ -6524,14 +6563,15 @@ dependencies = [
 
 [[package]]
 name = "suprnova-live"
-version = "2.0.2"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v2.0.2#2333400d6009eb4e292198e0b4b9a6ad0e11f1ae"
+version = "2.1.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v2.1.0#250a6423d9c3f63945843093df7e021bd3bee595"
 dependencies = [
  "askama",
  "askama_parser",
  "async-trait",
  "base64 0.22.1",
  "bytes",
+ "charts-rs",
  "getrandom 0.4.3",
  "hkdf 0.13.0",
  "hmac 0.13.0",
@@ -6550,8 +6590,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-macros"
-version = "2.0.2"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v2.0.2#2333400d6009eb4e292198e0b4b9a6ad0e11f1ae"
+version = "2.1.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v2.1.0#250a6423d9c3f63945843093df7e021bd3bee595"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -6561,8 +6601,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-magnetar"
-version = "2.0.2"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v2.0.2#2333400d6009eb4e292198e0b4b9a6ad0e11f1ae"
+version = "2.1.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v2.1.0#250a6423d9c3f63945843093df7e021bd3bee595"
 dependencies = [
  "aes-gcm",
  "apple",
@@ -6591,7 +6631,7 @@ dependencies = [
 
 [[package]]
 name = "suprnova-oauth-github"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "base64 0.22.1",
  "sea-orm",
@@ -6608,8 +6648,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-web-push"
-version = "2.0.2"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v2.0.2#2333400d6009eb4e292198e0b4b9a6ad0e11f1ae"
+version = "2.1.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v2.1.0#250a6423d9c3f63945843093df7e021bd3bee595"
 dependencies = [
  "base64 0.22.1",
  "chrono",
@@ -7214,6 +7254,15 @@ name = "try-lock"
 version = "0.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e421abadd41a4225275504ea4d6566923418b7f05506fbc9c0fe86ba7396114b"
+
+[[package]]
+name = "ttf-parser"
+version = "0.25.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d2df906b07856748fa3f6e0ad0cbaa047052d4a7dd609e231c4f72cee8c36f31"
+dependencies = [
+ "core_maths",
+]
 
 [[package]]
 name = "tungstenite"
