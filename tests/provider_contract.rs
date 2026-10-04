@@ -162,6 +162,51 @@ async fn requires_email_completion_without_a_verified_primary_email() {
     assert_eq!(identity.display_name.as_deref(), Some("octocat"));
 }
 
+/// Reads the avatar the way the host engine does on a callback: from the
+/// same response, before `resolve_identity` takes it.
+async fn avatar_and_subject(user: &str) -> (Option<String>, String) {
+    let provider = provider(Arc::new(RecordingRevocationTransport::default()));
+    let response = ProviderResponse::UserInfo {
+        body: serde_json::json!({
+            "user": user,
+            "emails": r#"[{"email":"primary@example.com","primary":true,"verified":true,"visibility":null}]"#
+        })
+        .to_string(),
+    };
+    let avatar_url = provider.avatar_url(&response);
+    let identity = provider
+        .resolve_identity(response)
+        .await
+        .expect("a profile with or without an avatar signs in");
+    (avatar_url, identity.subject)
+}
+
+#[tokio::test]
+async fn reports_github_avatar_url_as_the_account_picture() {
+    let (avatar_url, subject) = avatar_and_subject(
+        r#"{"id":583231,"login":"octocat","name":"The Octocat","avatar_url":"https://avatars.githubusercontent.com/u/583231?v=4"}"#,
+    )
+    .await;
+    assert_eq!(subject, "583231");
+    assert_eq!(
+        avatar_url.as_deref(),
+        Some("https://avatars.githubusercontent.com/u/583231?v=4")
+    );
+}
+
+#[tokio::test]
+async fn reports_no_picture_for_a_missing_or_empty_avatar_url() {
+    for user in [
+        r#"{"id":583231,"login":"octocat","name":null}"#,
+        r#"{"id":583231,"login":"octocat","name":null,"avatar_url":null}"#,
+        r#"{"id":583231,"login":"octocat","name":null,"avatar_url":""}"#,
+    ] {
+        let (avatar_url, subject) = avatar_and_subject(user).await;
+        assert_eq!(subject, "583231");
+        assert_eq!(avatar_url, None, "no picture for {user}");
+    }
+}
+
 #[tokio::test]
 async fn rejects_ambiguous_verified_primary_emails() {
     let provider = provider(Arc::new(RecordingRevocationTransport::default()));

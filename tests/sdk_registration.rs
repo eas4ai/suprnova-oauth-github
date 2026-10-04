@@ -56,7 +56,8 @@ async fn external_crate_completes_identity_exchange_through_public_sdk() {
             "id": 583231,
             "login": "octocat",
             "name": "The Octocat",
-            "email": "ignored-public@example.com"
+            "email": "ignored-public@example.com",
+            "avatar_url": "https://avatars.githubusercontent.com/u/583231?v=4"
         })))
         .expect(1)
         .mount(&github)
@@ -160,4 +161,8 @@ async fn external_crate_completes_identity_exchange_through_public_sdk() {
         Some("verified-primary@example.com")
     );
     assert_eq!(identity.name.as_deref(), Some("The Octocat"));
+    assert_eq!(
+        identity.avatar_url.as_deref(),
+        Some("https://avatars.githubusercontent.com/u/583231?v=4")
+    );
 }

@@ -12,6 +12,7 @@ The plugin provides:
 - A transport adapter that fetches both `GET /user` and `GET /user/emails`.
 - Identity mapping by GitHub's stable numeric user ID.
 - Verified-email handling that accepts only a verified primary GitHub address.
+- The account picture from GitHub's `avatar_url`, which Suprnova reports as `OAuthIdentity.avatar_url`. The account owner controls this URL, so check its scheme and length before you render, fetch, or store it.
 - GitHub grant revocation with HTTP Basic client authentication and a JSON request body.
 - GitHub.com defaults and validated endpoint overrides for tests and compatible GitHub Enterprise Server installations.
 

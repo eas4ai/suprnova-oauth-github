@@ -279,6 +279,7 @@ struct GitHubUser {
     id: u64,
     login: String,
     name: Option<String>,
+    avatar_url: Option<String>,
 }
 
 #[derive(serde::Deserialize)]
@@ -355,6 +356,23 @@ Three choices are deliberate:
 3. Fail closed if the response contains more than one verified primary address.
 
 When no verified primary address exists, return `email: None` and `email_verified: false`. Suprnova then chooses its email-completion outcome instead of treating an unproven address as ownership.
+
+## Report the account picture
+
+`OAuthProvider::avatar_url` reads the account picture from the same response that `resolve_identity` parses. Suprnova calls it before `resolve_identity` and reports the result as `OAuthIdentity.avatar_url`. Its default returns `None`, so a provider that doesn't implement it still signs in.
+
+```rust
+fn avatar_url(&self, response: &suprnova::ProviderResponse) -> Option<String> {
+    let suprnova::ProviderResponse::UserInfo { body } = response else {
+        return None;
+    };
+    let combined: CombinedUserInfo = serde_json::from_str(body).ok()?;
+    let user: GitHubUser = serde_json::from_str(&combined.user).ok()?;
+    user.avatar_url.filter(|url| !url.trim().is_empty())
+}
+```
+
+Return `None` for a missing or empty URL rather than an error: a profile without a picture still signs in. The URL is untrusted profile data, so an application checks its scheme and length before it renders, fetches, or stores it.
 
 ## Build the two-request transport adapter
 

@@ -160,6 +160,7 @@ struct GitHubUser {
     id: u64,
     login: String,
     name: Option<String>,
+    avatar_url: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -228,6 +229,18 @@ impl OAuthProvider for GitHubOAuthProvider {
             email_verified,
             display_name,
         })
+    }
+
+    /// GitHub's `avatar_url` from `GET /user`, or `None` when it is missing
+    /// or empty. The account owner controls it, so it is untrusted profile
+    /// data the application checks before it renders, fetches or stores it.
+    fn avatar_url(&self, response: &ProviderResponse) -> Option<String> {
+        let ProviderResponse::UserInfo { body } = response else {
+            return None;
+        };
+        let combined: CombinedUserInfo = serde_json::from_str(body).ok()?;
+        let user: GitHubUser = serde_json::from_str(&combined.user).ok()?;
+        user.avatar_url.filter(|url| !url.trim().is_empty())
     }
 
     async fn revoke(&self, token: &str, hint: TokenHint) -> OAuthResult<()> {
