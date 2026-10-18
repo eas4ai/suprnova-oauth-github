@@ -2649,6 +2649,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "hound"
+version = "3.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "62adaabb884c94955b19907d60019f4e145d091c75345379e70d1ee696f7854f"
+
+[[package]]
 name = "html5ever"
 version = "0.39.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3244,9 +3250,20 @@ checksum = "85ab80394333c02fe689eaf900ab500fbd0c2213da414687ebf995a65d5a6104"
 dependencies = [
  "bytemuck",
  "byteorder-lite",
+ "image-webp",
  "moxcms",
  "num-traits",
  "png",
+]
+
+[[package]]
+name = "image-webp"
+version = "0.2.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "525e9ff3e1a4be2fbea1fdf0e98686a6d98b4d8f937e1bf7402245af1909e8c3"
+dependencies = [
+ "byteorder-lite",
+ "quick-error",
 ]
 
 [[package]]
@@ -4981,6 +4998,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "quick-error"
+version = "2.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a993555f31e5a609f617c12db6250dedcac1b0a85076912c436e6fc9b2c8e6a3"
+
+[[package]]
 name = "quick-xml"
 version = "0.41.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6499,8 +6522,8 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 
 [[package]]
 name = "suprnova"
-version = "4.2.1"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.2.1#a50011906fc69c3a08e6d7a4cbe98ebdaa1224c7"
+version = "4.3.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.3.0#2e0c5227b9090c47894169c0d545b40eb27c3641"
 dependencies = [
  "aes-gcm",
  "ammonia",
@@ -6539,6 +6562,7 @@ dependencies = [
  "getrandom 0.4.3",
  "hex",
  "hmac 0.13.0",
+ "hound",
  "http 1.4.1",
  "http-body-util",
  "httpdate",
@@ -6628,8 +6652,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-live"
-version = "4.2.1"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.2.1#a50011906fc69c3a08e6d7a4cbe98ebdaa1224c7"
+version = "4.3.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.3.0#2e0c5227b9090c47894169c0d545b40eb27c3641"
 dependencies = [
  "askama",
  "askama_parser",
@@ -6655,8 +6679,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-macros"
-version = "4.2.1"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.2.1#a50011906fc69c3a08e6d7a4cbe98ebdaa1224c7"
+version = "4.3.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.3.0#2e0c5227b9090c47894169c0d545b40eb27c3641"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -6667,8 +6691,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-magnetar"
-version = "4.2.1"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.2.1#a50011906fc69c3a08e6d7a4cbe98ebdaa1224c7"
+version = "4.3.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.3.0#2e0c5227b9090c47894169c0d545b40eb27c3641"
 dependencies = [
  "aes-gcm",
  "apple",
@@ -6697,7 +6721,7 @@ dependencies = [
 
 [[package]]
 name = "suprnova-oauth-github"
-version = "0.4.7"
+version = "0.4.8"
 dependencies = [
  "base64 0.22.1",
  "sea-orm",
@@ -6714,8 +6738,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-web-push"
-version = "4.2.1"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.2.1#a50011906fc69c3a08e6d7a4cbe98ebdaa1224c7"
+version = "4.3.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.3.0#2e0c5227b9090c47894169c0d545b40eb27c3641"
 dependencies = [
  "base64 0.22.1",
  "chrono",
