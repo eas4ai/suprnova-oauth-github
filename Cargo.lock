@@ -6584,8 +6584,8 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 
 [[package]]
 name = "suprnova"
-version = "4.4.0"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.4.0#4a085543664fad006c9e8c90f891ef15a5601ef3"
+version = "4.5.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.5.0#a79938673e9b04afa1bb0da62d0012f915e9c597"
 dependencies = [
  "aes-gcm",
  "ammonia",
@@ -6716,8 +6716,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-live"
-version = "4.4.0"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.4.0#4a085543664fad006c9e8c90f891ef15a5601ef3"
+version = "4.5.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.5.0#a79938673e9b04afa1bb0da62d0012f915e9c597"
 dependencies = [
  "askama",
  "askama_parser",
@@ -6743,8 +6743,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-macros"
-version = "4.4.0"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.4.0#4a085543664fad006c9e8c90f891ef15a5601ef3"
+version = "4.5.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.5.0#a79938673e9b04afa1bb0da62d0012f915e9c597"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -6755,8 +6755,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-magnetar"
-version = "4.4.0"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.4.0#4a085543664fad006c9e8c90f891ef15a5601ef3"
+version = "4.5.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.5.0#a79938673e9b04afa1bb0da62d0012f915e9c597"
 dependencies = [
  "aes-gcm",
  "apple",
@@ -6787,7 +6787,7 @@ dependencies = [
 
 [[package]]
 name = "suprnova-oauth-github"
-version = "0.4.9"
+version = "0.4.10"
 dependencies = [
  "base64 0.22.1",
  "sea-orm",
@@ -6804,8 +6804,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-web-push"
-version = "4.4.0"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.4.0#4a085543664fad006c9e8c90f891ef15a5601ef3"
+version = "4.5.0"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.5.0#a79938673e9b04afa1bb0da62d0012f915e9c597"
 dependencies = [
  "base64 0.22.1",
  "chrono",
