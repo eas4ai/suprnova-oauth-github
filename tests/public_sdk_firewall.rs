@@ -23,7 +23,7 @@ fn manifest_depends_on_the_public_tag_without_magnetar_or_paths() {
     );
     assert_eq!(
         suprnova.get("tag").and_then(toml::Value::as_str),
-        Some("v4.6.1")
+        Some("v4.6.2")
     );
     assert!(!suprnova.contains_key("path"));
 }

@@ -1566,9 +1566,9 @@ dependencies = [
 
 [[package]]
 name = "ctutils"
-version = "0.4.2"
+version = "0.4.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7d5515a3834141de9eafb9717ad39eea8247b5674e6066c404e8c4b365d2a29e"
+checksum = "38d28fb6aa7dd680b3ffd1a3e64e115c177bdba63c0ae7f9cd48129ff05c4fa0"
 dependencies = [
  "cmov",
 ]
@@ -6763,8 +6763,8 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 
 [[package]]
 name = "suprnova"
-version = "4.6.1"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.6.1#5112862367b76a2ea3875d0135ca4ca1ec602c32"
+version = "4.6.2"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.6.2#1c8b2d07b65b120337b06c975522f850a340a418"
 dependencies = [
  "aes-gcm",
  "ammonia",
@@ -6796,6 +6796,7 @@ dependencies = [
  "fake",
  "featureflag",
  "fixed_decimal",
+ "flate2",
  "fluent-bundle",
  "fluent-langneg 0.14.2",
  "fluent-syntax",
@@ -6899,8 +6900,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-live"
-version = "4.6.1"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.6.1#5112862367b76a2ea3875d0135ca4ca1ec602c32"
+version = "4.6.2"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.6.2#1c8b2d07b65b120337b06c975522f850a340a418"
 dependencies = [
  "askama",
  "askama_parser",
@@ -6926,8 +6927,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-macros"
-version = "4.6.1"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.6.1#5112862367b76a2ea3875d0135ca4ca1ec602c32"
+version = "4.6.2"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.6.2#1c8b2d07b65b120337b06c975522f850a340a418"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -6938,8 +6939,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-magnetar"
-version = "4.6.1"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.6.1#5112862367b76a2ea3875d0135ca4ca1ec602c32"
+version = "4.6.2"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.6.2#1c8b2d07b65b120337b06c975522f850a340a418"
 dependencies = [
  "aes-gcm",
  "apple",
@@ -6970,7 +6971,7 @@ dependencies = [
 
 [[package]]
 name = "suprnova-oauth-github"
-version = "0.4.13"
+version = "0.4.14"
 dependencies = [
  "base64 0.22.1",
  "sea-orm",
@@ -6987,8 +6988,8 @@ dependencies = [
 
 [[package]]
 name = "suprnova-web-push"
-version = "4.6.1"
-source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.6.1#5112862367b76a2ea3875d0135ca4ca1ec602c32"
+version = "4.6.2"
+source = "git+https://github.com/eas4ai/suprnova.git?tag=v4.6.2#1c8b2d07b65b120337b06c975522f850a340a418"
 dependencies = [
  "base64 0.22.1",
  "chrono",
